@@ -92,20 +92,20 @@ impl World {
     }
 
     fn init_canvas(&self) {
-        let total_width = (self.cell_w * self.width) as f64;
-        let total_height = (self.cell_h * self.height) as f64;
+        let total_width = (self.cell_w * self.width - 1) as f64;
+        let total_height = (self.cell_h * self.height - 1) as f64;
         let canvas = self.ctx.canvas().unwrap();
         canvas.set_width(total_width as u32);
         canvas.set_height(total_height as u32);
         self.ctx.clear_rect(0.0, 0.0, total_width, total_height);
         self.ctx.set_stroke_style_str("lightgray");
 
-        for i in 1..=self.width {
+        for i in 1..self.width {
             let x = (self.cell_w * i) as f64 - 0.5;
             self.ctx.move_to(x, 0.0);
             self.ctx.line_to(x, total_height);
         }
-        for i in 1..=self.height {
+        for i in 1..self.height {
             let y = (self.cell_h * i) as f64 - 0.5;
             self.ctx.move_to(0.0, y);
             self.ctx.line_to(total_width, y);
