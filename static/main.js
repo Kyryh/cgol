@@ -25,9 +25,9 @@ await init().then(function () {
         world.height = height
     }).trigger("change")
 
-    $("#wrap_around").on("click", function () {
+    $("#wrap_around").on("change", function () {
         world.wrap_around = $(this).prop("checked")
-    })
+    }).trigger("change")
 
     $("#run_once").on("click", function () {
         world.update()
