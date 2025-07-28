@@ -13,8 +13,6 @@ await init().then(function () {
     /** @type {World} */
     let world = new World(ctx, 0, 0, CELL_SIZE, CELL_SIZE, true);
 
-    const auto = $("#auto")
-
     $("#world_w").on("change", function () {
         const width = $(this).val()
         world.width = width
@@ -33,12 +31,28 @@ await init().then(function () {
         world.update()
     })
 
-
     $("#canvas").on("click", function (e) {
         let mouse_pos = get_mouse_pos(e)
         world.toggle_cell(mouse_pos.x, mouse_pos.y)
     })
 
+    const auto = $("#auto")
+    const auto_speed = $("#auto_speed")
+
+    let last_run = 0
+
+    /**
+     * @param {number} timestamp 
+     */
+    function run_auto(timestamp) {
+        requestAnimationFrame(run_auto)
+        if (auto.prop("checked") && timestamp > (last_run + 1000 / auto_speed.val())) {
+            last_run = timestamp
+            world.update()
+        }
+    }
+
+    requestAnimationFrame(run_auto)
 
     function get_mouse_pos(evt) {
         let rect = canvas[0].getBoundingClientRect()
