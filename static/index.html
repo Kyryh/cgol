@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Conway's Game of Life</title>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script type="module" src="main.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+
+<body>
+    <div class="center">
+        <div class="list">
+            <div>
+                World size
+                <br>
+                <label>
+                    Width
+                    <input type="number" id="world_w" min="1" max="4096" value="100">
+                </label>
+                <label>
+                    Height
+                    <input type="number" id="world_h" min="1" max="4096" value="50">
+                </label>
+            </div>
+            <label>
+                Wrap around
+                <input type="checkbox" id="wrap_around">
+            </label>
+            <div>
+                <label>
+                    Run automatically
+                    <input type="checkbox" id="auto">
+                </label>
+                <br>
+                <label>
+                    Speed
+                    <input type="range" id="auto_speed">
+                </label>
+            </div>
+
+            <button id="run_once">Run once</button>
+        </div>
+        <canvas id="canvas" width="300" height="150"></canvas>
+    </div>
+</body>
+
+</html>
