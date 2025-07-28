@@ -19,7 +19,7 @@ jobs:
         run: cargo install wasm-pack
 
       - name: Build 
-        run: wasm-pack build --verbose --target web
+        run: wasm-pack build --verbose --target web --no-default-features
 
       - name: Package files
         shell: bash
